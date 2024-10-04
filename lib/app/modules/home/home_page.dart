@@ -20,7 +20,7 @@ class HomePage extends ConsumerWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: ref.read(HomeController.provider).increment,
+        onPressed: ref.read(HomeController.provider.notifier).increment,
         child: const Icon(Icons.add),
       ),
     );

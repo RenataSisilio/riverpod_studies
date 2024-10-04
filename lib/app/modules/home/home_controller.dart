@@ -6,5 +6,6 @@ final class HomeController extends Notifier<int> {
 
   void increment() => state++;
 
-  static final provider = NotifierProvider(() => HomeController());
+  static final provider =
+      NotifierProvider<HomeController, int>(() => HomeController());
 }
