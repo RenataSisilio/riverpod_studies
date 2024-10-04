@@ -7,9 +7,9 @@ class User {
 
   User({
     List<String>? friends,
-    required this.id,
-    required this.username,
-    required this.email,
+    this.id = '',
+    this.username = '',
+    this.email = '',
     required this.password,
   }) : friends = friends ?? [];
 

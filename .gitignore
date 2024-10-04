@@ -49,3 +49,5 @@ macos/
 test/
 web/
 windows/
+
+lib/app/core/private
