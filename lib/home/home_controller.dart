@@ -1,14 +1,10 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final class HomeController extends StateNotifier<int> {
-  HomeController() : super(0);
+final class HomeController extends Notifier<int> {
+  @override
+  int build() => 0;
 
-  void increment() {
-    state++;
-  }
+  void increment() => state++;
 
-  static final provider =
-      StateNotifierProvider.autoDispose<HomeController, int>(
-    (ref) => HomeController(),
-  );
+  static final provider = Provider((ref) => HomeController());
 }
