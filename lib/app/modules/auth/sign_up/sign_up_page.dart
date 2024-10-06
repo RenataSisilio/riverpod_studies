@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../core/utils/constants/routes.dart';
+import '../../../core/utils/routes.dart';
 import '../auth_states.dart';
 import '../components/email_field.dart';
 import '../components/password_field.dart';
@@ -41,14 +41,15 @@ class _SignUpPageState extends State<SignUpPage> {
                       final authState = ref.watch(SignUpController.provider);
 
                       ref.listen(
-                          SignUpController.provider,
-                          (_, next) => switch (next) {
-                                ErrorAuthState() =>
-                                  _showErrorOnSnackbar(context, next),
-                                SuccessAuthState() => Navigator.of(context)
-                                    .pushReplacementNamed(Routes.home),
-                                _ => null,
-                              });
+                        SignUpController.provider,
+                        (_, next) => switch (next) {
+                          ErrorAuthState() =>
+                            _showErrorOnSnackbar(context, next),
+                          SuccessAuthState() => Navigator.of(context)
+                              .pushReplacementNamed(Routes.home),
+                          _ => null,
+                        },
+                      );
 
                       return Column(
                         mainAxisSize: MainAxisSize.min,

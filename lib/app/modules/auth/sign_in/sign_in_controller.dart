@@ -16,11 +16,15 @@ class SignInController extends Notifier<AuthState> {
   final AuthRepository _repo;
 
   /// Starts the sign up call with the current values
-  Future<void> signIn(
-      {required String username, required String password}) async {
+  Future<void> signIn({
+    required String username,
+    required String password,
+  }) async {
     try {
       state = LoadingAuthState();
+
       await _repo.signIn(username: username, password: password);
+
       state = SuccessAuthState();
     } on AppError catch (e) {
       state = ErrorAuthState(e);

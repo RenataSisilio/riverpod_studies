@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-import '../../../core/utils/constants/routes.dart';
+import '../../../core/utils/routes.dart';
 import '../auth_states.dart';
 import '../components/password_field.dart';
 import '../components/text_header.dart';
@@ -40,14 +40,15 @@ class _SignInPageState extends State<SignInPage> {
                         final authState = ref.watch(SignInController.provider);
 
                         ref.listen(
-                            SignInController.provider,
-                            (_, next) => switch (next) {
-                                  ErrorAuthState() =>
-                                    _showErrorOnSnackbar(context, next),
-                                  SuccessAuthState() => Navigator.of(context)
-                                      .pushReplacementNamed(Routes.home),
-                                  _ => null,
-                                });
+                          SignInController.provider,
+                          (_, next) => switch (next) {
+                            ErrorAuthState() =>
+                              _showErrorOnSnackbar(context, next),
+                            SuccessAuthState() => Navigator.of(context)
+                                .pushReplacementNamed(Routes.home),
+                            _ => null,
+                          },
+                        );
 
                         return Column(
                           mainAxisSize: MainAxisSize.min,

@@ -23,12 +23,15 @@ class SignUpController extends Notifier<AuthState> {
   }) async {
     try {
       state = LoadingAuthState();
+
       await _repo.signUp(
         email: email,
         password: password,
         username: username,
       );
+
       await _repo.signIn(username: username, password: password);
+      
       state = SuccessAuthState();
     } on AppError catch (e) {
       state = ErrorAuthState(e);
