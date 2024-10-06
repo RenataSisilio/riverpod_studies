@@ -1,5 +1,5 @@
-class User {
-  final String id;
+final class User {
+  final String? id;
   final String username;
   final String email;
   final String password;
@@ -7,7 +7,7 @@ class User {
 
   User({
     List<String>? friends,
-    this.id = '',
+    this.id,
     this.username = '',
     this.email = '',
     required this.password,

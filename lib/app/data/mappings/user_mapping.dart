@@ -6,8 +6,8 @@ import '../../models/user.dart';
 extension Mapping on User {
   Map<String, dynamic> toMap(AuthClientInterface client) {
     return switch (client) {
-      ParseSdkAuthClient() => <String, dynamic>{
-          'id': id,
+      ParseSdkAuthClient() => {
+          'objectId': id,
           'username': username,
           'email': email,
           'password': password,
@@ -19,24 +19,24 @@ extension Mapping on User {
         ),
     };
   }
+}
 
-  static User fromMap(Map<String, dynamic> map) {
-    return switch (map) {
-      {
-        'id': String id,
-        'username': String username,
-        'email': String email,
-        'password': String password,
-        'friends': List? friends
-      } =>
-        User(
-          id: id,
-          username: username,
-          email: email,
-          password: password,
-          friends: friends == null ? [] : [...friends.map((e) => e as String)],
-        ),
-      _ => throw InvalidDataFormatError(modelName: User, data: map),
-    };
-  }
+User userFromMap(Map<String, dynamic> map) {
+  return switch (map) {
+    {
+      'objectId': String id,
+      'username': String username,
+      'email': String email,
+      'password': String password,
+      'friends': List? friends
+    } =>
+      User(
+        id: id,
+        username: username,
+        email: email,
+        password: password,
+        friends: friends == null ? [] : [...friends.map((e) => e as String)],
+      ),
+    _ => throw InvalidDataFormatError(modelName: User, data: map),
+  };
 }
