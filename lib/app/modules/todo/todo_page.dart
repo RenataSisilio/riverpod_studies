@@ -30,6 +30,9 @@ class _TodoPageState extends State<TodoPage> {
   @override
   Widget build(context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text(widget.originalTodo == null ? 'New Todo' : 'Edit Todo'),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: SingleChildScrollView(
