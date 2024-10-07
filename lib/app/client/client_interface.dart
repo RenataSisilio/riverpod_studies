@@ -1,4 +1,3 @@
-// TODO: review doc
 abstract interface class ClientInterface {
   /// Retrieves information from ```endpoint```.
   ///
@@ -9,7 +8,8 @@ abstract interface class ClientInterface {
   /// Retrieves information of all instances from ```endpoint```
   /// where ```field``` is equal to ```value```.
   ///
-  /// Returns a ```List<Map<String, dynamic>>``` when ```id == null```
+  /// Returns a ```List<Map<String, dynamic>>```
+  /// with the data of all found instances.
   Future<List<Map<String, dynamic>>> getWhere(
     String endpoint, {
     required String field,

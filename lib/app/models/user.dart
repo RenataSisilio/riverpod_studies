@@ -7,7 +7,6 @@ final class User {
     required this.password,
   }) : friends = friends ?? [];
 
-  // TODO: document
   final String? id;
   final String username;
   final String email;

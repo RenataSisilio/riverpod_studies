@@ -4,7 +4,7 @@ import '../../core/errors/data_errors.dart';
 import '../../models/user.dart';
 
 extension Mapping on User {
-  // TODO: document
+  /// Turns the user data into a ```Map```, based on the current client.
   Map<String, dynamic> toMap(AuthClientInterface client) {
     return switch (client) {
       ParseSdkAuthClient() => {
@@ -22,7 +22,7 @@ extension Mapping on User {
   }
 }
 
-// TODO: document
+/// Turns the retrieved data into a ```User```, based on format.
 User userFromMap(Map<String, dynamic> map) {
   return switch (map) {
     {

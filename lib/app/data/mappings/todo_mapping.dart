@@ -4,7 +4,7 @@ import '../../core/errors/data_errors.dart';
 import '../../models/todo.dart';
 
 extension Mapping on Todo {
-  // TODO: document
+  /// Turns the todo data into a ```Map```, based on the current client.
   Map<String, dynamic> toMap(ClientInterface client) {
     return switch (client) {
       ParseSdkClient() => {
@@ -24,7 +24,7 @@ extension Mapping on Todo {
   }
 }
 
-// TODO: document
+/// Turns the retrieved data into a ```Todo```, based on format.
 Todo todoFromMap(Map<String, dynamic> map) {
   return switch (map) {
     {

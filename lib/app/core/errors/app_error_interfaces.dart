@@ -1,7 +1,7 @@
 abstract interface class AppError {
   AppError(this.message);
 
-  // TODO: document
+  /// A friendly error message to show to the final user.
   final String message;
 }
 

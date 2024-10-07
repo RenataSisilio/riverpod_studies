@@ -13,7 +13,11 @@ final class TodoRepository {
 
   static const _endpoint = 'Todo';
 
-  // TODO: document
+  /// Creates a new ```Todo```, saving it through the client.
+  ///
+  /// Returns a record with a success message
+  /// and the data of the created Todo,
+  /// in case of success.
   Future<(String, Todo)> create({
     required String title,
     required String description,
@@ -42,7 +46,7 @@ final class TodoRepository {
     }
   }
 
-  // TODO: document
+  /// Retrieves all ```Todo```s of the current ```User``` through the client.
   Future<List<Todo>> getMyTodos() async {
     try {
       final userId = switch (_client) {
@@ -63,7 +67,11 @@ final class TodoRepository {
     }
   }
 
-  // TODO: document
+  /// Edits a ```Todo``` info, saving it through the client.
+  ///
+  /// Returns a record with a success message
+  /// and the data of the edited Todo,
+  /// in case of success.
   Future<(String, Todo)> edit({
     required Todo originalTodo,
     String? newTitle,
@@ -89,7 +97,10 @@ final class TodoRepository {
     }
   }
 
-  // TODO: document
+  /// Marks a ```Todo``` as, saving it through the client.
+  ///
+  /// Returns the data of the edited Todo,
+  /// in case of success.
   Future<Todo> markAsDone(Todo todo, {bool done = true}) async {
     try {
       final receivedData = await _client.replace(
@@ -106,7 +117,9 @@ final class TodoRepository {
     }
   }
 
-  // TODO: document
+  /// Deletes a ```Todo``` through the client.
+  ///
+  /// Returns a success message in case of success.
   Future<String> delete(Todo todo) async {
     try {
       await _client.delete(_endpoint, id: todo.id ?? 'null-id');

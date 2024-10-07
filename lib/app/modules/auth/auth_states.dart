@@ -11,6 +11,9 @@ final class SuccessAuthState implements AuthState {}
 final class ErrorAuthState implements AuthState {
   ErrorAuthState(this.error);
 
-  // TODO: document
+  /// The thrown ```AppError```.
+  ///
+  /// It can be a ```ExternalError```, a ```DataError```,
+  /// or any class that extends ```AppError```.
   final AppError error;
 }

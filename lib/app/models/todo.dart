@@ -9,7 +9,6 @@ final class Todo {
     List<String>? sharedWith,
   }) : sharedWith = sharedWith ?? [];
 
-  // TODO: document
   final String? id;
   final String userId;
   final String title;

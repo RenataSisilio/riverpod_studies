@@ -4,7 +4,7 @@ import 'app_error_interfaces.dart';
 
 final class InvalidSessionError implements ClientError {
   @override
-  // TODO: improve UX
+  // TODO: improve UX (like refreshing token or something like that)
   String get message => 'Invalid session. Please try to login again.';
 }
 

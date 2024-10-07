@@ -9,12 +9,13 @@ import '../client/parse_sdk_client.dart';
 import '../data/repositories/auth_repository.dart';
 import '../data/repositories/todo_repository.dart';
 
-// TODO: document
 abstract final class DependencyInjection {
   static final getIt = GetIt.instance;
 
+  /// Retrieves an instance of a registered type [T].
   static T get<T extends Object>() => getIt.get();
 
+  /// Registers all the global-needed dependecies.
   static void setGlobalDependencies() {
     getIt.registerSingleton<AuthClientInterface>(ParseSdkAuthClient());
 
@@ -25,6 +26,7 @@ abstract final class DependencyInjection {
     log('All global dependencies successfully registered!');
   }
 
+  /// Registers the dependencies that are needed in the main module.
   static void setHomeDependencies() {
     if (!getIt.isRegistered<TodoRepository>()) {
       getIt.registerLazySingleton(() => TodoRepository(getIt.get()));
@@ -33,6 +35,7 @@ abstract final class DependencyInjection {
     log('All Home dependencies successfully registered!');
   }
 
+  /// Disposes the dependencies that are only needed in the main module.
   static void disposeHomeDependencies() {
     getIt.unregister<TodoRepository>();
 

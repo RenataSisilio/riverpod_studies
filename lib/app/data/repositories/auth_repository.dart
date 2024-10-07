@@ -3,7 +3,6 @@ import '../../core/utils/constants/messages.dart';
 import '../../models/user.dart';
 import '../mappings/user_mapping.dart';
 
-// TODO: review doc
 final class AuthRepository {
   AuthRepository(this._client);
 
@@ -88,9 +87,7 @@ final class AuthRepository {
   }
 
   /// Retrieves the current user from local storage.
-  ///
-  /// Returns ```true``` in case of success.
-  Future<bool> getCurrentUser() {
+  Future<User> getCurrentUser() {
     // TODO: implement user persistency (retrieve)
     throw UnimplementedError();
   }
@@ -114,7 +111,7 @@ final class AuthRepository {
   /// Resets user's password.
   ///
   /// Returns a success message for the user, or rethrows the client error.
-  Future<bool> resetPassword({
+  Future<String> resetPassword({
     required String email,
     required String token,
     required String newPassword,
