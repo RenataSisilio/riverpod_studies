@@ -40,7 +40,6 @@ class _HomePageState extends State<HomePage> {
                   ],
                   onSelectionChanged: (set) => showDoneTodos.value = set.last,
                   selected: {value},
-                  // multiSelectionEnabled: true,
                 ),
               ),
             ],
@@ -57,7 +56,7 @@ class _HomePageState extends State<HomePage> {
               ),
             SuccessHomeState() => homeState.todos.isEmpty
                 ? const Center(
-                    child: Text('You did\nt add any todos yet.'),
+                    child: Text('You didn\'t add any todos yet.'),
                   )
                 : ValueListenableBuilder(
                     valueListenable: showDoneTodos,
