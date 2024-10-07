@@ -3,6 +3,7 @@ import '../../core/utils/constants/messages.dart';
 import '../../models/user.dart';
 import '../mappings/user_mapping.dart';
 
+// TODO: review doc
 final class AuthRepository {
   AuthRepository(this._client);
 

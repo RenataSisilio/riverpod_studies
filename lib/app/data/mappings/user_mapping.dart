@@ -4,6 +4,7 @@ import '../../core/errors/data_errors.dart';
 import '../../models/user.dart';
 
 extension Mapping on User {
+  // TODO: document
   Map<String, dynamic> toMap(AuthClientInterface client) {
     return switch (client) {
       ParseSdkAuthClient() => {
@@ -21,6 +22,7 @@ extension Mapping on User {
   }
 }
 
+// TODO: document
 User userFromMap(Map<String, dynamic> map) {
   return switch (map) {
     {

@@ -1,10 +1,4 @@
 final class User {
-  final String? id;
-  final String username;
-  final String email;
-  final String password;
-  final List<String> friends;
-
   User({
     List<String>? friends,
     this.id,
@@ -12,6 +6,13 @@ final class User {
     this.email = '',
     required this.password,
   }) : friends = friends ?? [];
+
+  // TODO: document
+  final String? id;
+  final String username;
+  final String email;
+  final String password;
+  final List<String> friends;
 
   User copyWith({
     String? id,

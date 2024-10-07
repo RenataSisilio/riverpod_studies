@@ -42,14 +42,12 @@ final class HomeController extends Notifier<HomeState> {
     }
   }
 
-  void add(Todo todo) => _todos.add(todo);
-
   void replace(Todo originalTodo, Todo savedTodo) {
     final index = _todos.indexOf(originalTodo);
 
     _todos.replaceRange(index, index + 1, [savedTodo]);
 
-    // state = SuccessHomeState(_todos);
+    state = SuccessHomeState(_todos);
   }
 
   static final provider = NotifierProvider<HomeController, HomeState>(

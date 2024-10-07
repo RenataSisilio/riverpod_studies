@@ -21,10 +21,14 @@ class _TodoPageState extends State<TodoPage> {
   final description = TextEditingController();
 
   @override
-  Widget build(context) {
+  void initState() {
+    super.initState();
     title.text = widget.originalTodo?.title ?? '';
     description.text = widget.originalTodo?.description ?? '';
+  }
 
+  @override
+  Widget build(context) {
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(16),
@@ -73,9 +77,11 @@ class _TodoPageState extends State<TodoPage> {
 
   Future<void> _saveTodo(String value, WidgetRef ref) async {
     if (value != '') {
-      ref
-          .read(TodoController.provider.notifier)
-          .saveTodo(newTitle: title.text, newDescription: description.text);
+      ref.read(TodoController.provider.notifier).saveTodo(
+            newTitle: title.text,
+            newDescription: description.text,
+            originalTodo: widget.originalTodo,
+          );
     }
   }
 
@@ -95,8 +101,15 @@ class _TodoPageState extends State<TodoPage> {
     SuccessTodoState state,
   ) async {
     Navigator.of(context)
-      ..maybePop() // exits loading dialog
-      ..maybePop(widget.originalTodo); // exits page
+      // exits loading dialog
+      ..pop()
+      // exits page and returns the new Todo
+      ..maybePop(
+        widget.originalTodo?.copyWith(
+          title: title.text,
+          description: description.text,
+        ),
+      );
 
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text(state.message)),

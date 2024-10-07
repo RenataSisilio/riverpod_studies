@@ -17,6 +17,7 @@ abstract interface class Routes {
 
   static const todo = '/todo';
 
+  // TODO: document
   static final routes = {
         Routes.signIn: (context) => const SignInPage(),
         Routes.signUp: (context) => const SignUpPage(),

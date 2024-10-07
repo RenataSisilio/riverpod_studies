@@ -1,3 +1,4 @@
+// TODO: review doc
 abstract interface class ClientInterface {
   /// Retrieves information from ```endpoint```.
   ///

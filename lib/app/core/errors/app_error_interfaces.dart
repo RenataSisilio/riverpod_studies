@@ -1,6 +1,7 @@
 abstract interface class AppError {
   AppError(this.message);
 
+  // TODO: document
   final String message;
 }
 

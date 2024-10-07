@@ -13,6 +13,7 @@ final class TodoRepository {
 
   static const _endpoint = 'Todo';
 
+  // TODO: document
   Future<(String, Todo)> create({
     required String title,
     required String description,
@@ -41,6 +42,7 @@ final class TodoRepository {
     }
   }
 
+  // TODO: document
   Future<List<Todo>> getMyTodos() async {
     try {
       final userId = switch (_client) {
@@ -61,6 +63,7 @@ final class TodoRepository {
     }
   }
 
+  // TODO: document
   Future<(String, Todo)> edit({
     required Todo originalTodo,
     String? newTitle,
@@ -86,6 +89,7 @@ final class TodoRepository {
     }
   }
 
+  // TODO: document
   Future<String> delete(Todo todo) async {
     try {
       await _client.delete(_endpoint, id: todo.id ?? 'null-id');

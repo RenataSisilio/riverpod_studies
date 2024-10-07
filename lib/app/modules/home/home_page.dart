@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 import '../../core/utils/routes.dart';
-import '../../models/todo.dart';
 import 'components/todo_tile.dart';
 import 'home_controller.dart';
 import 'home_states.dart';
@@ -20,7 +19,7 @@ class HomePage extends ConsumerWidget {
     }
 
     return Scaffold(
-      appBar: AppBar(title: const Text('My Homes')),
+      appBar: AppBar(title: const Text('My Todos')),
       body: switch (homeState) {
         InitialHomeState() ||
         LoadingHomeState() =>
@@ -42,12 +41,16 @@ class HomePage extends ConsumerWidget {
               ),
       },
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.of(context)
-            .pushNamed(Routes.todo)
-            .then((newTodo) => notifier.add(newTodo as Todo)),
+        onPressed: () => _createNewTodo(context, notifier),
         tooltip: 'Add todo',
         child: const Icon(Icons.add),
       ),
     );
+  }
+
+  void _createNewTodo(BuildContext context, HomeController notifier) {
+    Navigator.of(context).pushNamed(Routes.todo).then(
+          (_) => notifier.getMyTodos(),
+        );
   }
 }

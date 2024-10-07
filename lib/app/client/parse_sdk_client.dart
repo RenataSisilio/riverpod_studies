@@ -122,7 +122,9 @@ final class ParseSdkClient implements ClientInterface {
       final response = await object.save();
 
       if (response.success) {
-        return response.result;
+        final object = response.result as ParseObject;
+
+        return object.toJson();
       }
 
       throw ParseSdkClientError(response.error!);

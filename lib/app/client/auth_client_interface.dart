@@ -1,3 +1,4 @@
+// TODO: review doc
 abstract interface class AuthClientInterface {
   /// Creates a new user.
   ///

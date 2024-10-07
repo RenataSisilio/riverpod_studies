@@ -9,19 +9,19 @@ final class InvalidSessionError implements ClientError {
 }
 
 final class UserNotFoundClientError implements ClientError {
-  UserNotFoundClientError(this.email);
+  UserNotFoundClientError(this._email);
 
-  final String email;
+  final String _email;
 
   @override
-  String get message => 'User not found: $email';
+  String get message => 'User not found: $_email';
 }
 
 final class ParseSdkClientError implements ClientError {
-  ParseSdkClientError(this.error);
+  ParseSdkClientError(this._error);
 
-  final ParseError error;
+  final ParseError _error;
 
   @override
-  String get message => error.message;
+  String get message => _error.message;
 }

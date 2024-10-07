@@ -16,7 +16,8 @@ class TodoTile extends ConsumerWidget {
       key: UniqueKey(),
       confirmDismiss: (direction) async =>
           direction == DismissDirection.startToEnd
-              ? await _openTodoPageThenUpdate(context, ref.read(HomeController.provider.notifier))
+              ? await _openTodoPageThenUpdate(
+                  context, ref.read(HomeController.provider.notifier))
               : await _confirmDeleteTodo(context),
       background: Container(
         color: Colors.blue,
@@ -52,9 +53,13 @@ class TodoTile extends ConsumerWidget {
     BuildContext context,
     HomeController notifier,
   ) async {
-    await Navigator.of(context)
-        .pushNamed(Routes.todo, arguments: todo)
-        .then((newTodo) => notifier.replace(todo, newTodo as Todo));
+    await Navigator.of(context).pushNamed(Routes.todo, arguments: todo).then(
+      (newTodo) {
+        if (newTodo != null) {
+          notifier.replace(todo, newTodo as Todo);
+        }
+      },
+    );
 
     return false;
   }

@@ -11,5 +11,6 @@ final class SuccessAuthState implements AuthState {}
 final class ErrorAuthState implements AuthState {
   ErrorAuthState(this.error);
 
+  // TODO: document
   final AppError error;
 }

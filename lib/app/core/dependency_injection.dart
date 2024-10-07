@@ -9,6 +9,7 @@ import '../client/parse_sdk_client.dart';
 import '../data/repositories/auth_repository.dart';
 import '../data/repositories/todo_repository.dart';
 
+// TODO: document
 abstract final class DependencyInjection {
   static final getIt = GetIt.instance;
 
