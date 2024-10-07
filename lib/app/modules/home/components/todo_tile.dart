@@ -14,18 +14,16 @@ class TodoTile extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Dismissible(
       key: UniqueKey(),
-      confirmDismiss: (direction) async =>
-          direction == DismissDirection.startToEnd
-              ? await _openTodoPageThenUpdate(
-                  context, ref.read(HomeController.provider.notifier))
-              : await _confirmDeleteTodo(context),
+      confirmDismiss: (direction) => direction == DismissDirection.startToEnd
+          ? _markAsDone(context, ref.read(HomeController.provider.notifier))
+          : _confirmDeleteTodo(context),
       background: Container(
-        color: Colors.blue,
+        color: Colors.green,
         child: const Align(
           alignment: Alignment.centerLeft,
           child: Padding(
             padding: EdgeInsets.all(8.0),
-            child: Icon(Icons.edit),
+            child: Icon(Icons.done),
           ),
         ),
       ),
@@ -40,6 +38,8 @@ class TodoTile extends ConsumerWidget {
         ),
       ),
       child: ListTile(
+        onTap: () => _openTodoPageThenUpdate(
+            context, ref.read(HomeController.provider.notifier)),
         title: Text(todo.title),
         subtitle: Text(
           todo.description,
@@ -60,6 +60,15 @@ class TodoTile extends ConsumerWidget {
         }
       },
     );
+
+    return false;
+  }
+
+  Future<bool> _markAsDone(
+    BuildContext context,
+    HomeController notifier,
+  ) async {
+    await notifier.markAsDone(todo, done: !todo.done);
 
     return false;
   }

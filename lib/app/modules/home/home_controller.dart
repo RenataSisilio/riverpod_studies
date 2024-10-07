@@ -50,6 +50,16 @@ final class HomeController extends Notifier<HomeState> {
     state = SuccessHomeState(_todos);
   }
 
+  Future<void> markAsDone(Todo todo, {bool done = true}) async {
+    try {
+      final savedTodo = await _repo.markAsDone(todo, done: done);
+
+      replace(todo, savedTodo);
+    } on AppError catch (e) {
+      state = ErrorHomeState(e);
+    }
+  }
+
   static final provider = NotifierProvider<HomeController, HomeState>(
       () => HomeController(DependencyInjection.get()));
 }

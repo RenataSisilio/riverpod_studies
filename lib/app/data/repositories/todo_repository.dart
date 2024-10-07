@@ -90,6 +90,23 @@ final class TodoRepository {
   }
 
   // TODO: document
+  Future<Todo> markAsDone(Todo todo, {bool done = true}) async {
+    try {
+      final receivedData = await _client.replace(
+        _endpoint,
+        id: todo.id!,
+        data: todo.copyWith(done: done).toMap(_client),
+      );
+
+      final savedTodo = todoFromMap(receivedData);
+
+      return savedTodo;
+    } catch (e) {
+      rethrow;
+    }
+  }
+
+  // TODO: document
   Future<String> delete(Todo todo) async {
     try {
       await _client.delete(_endpoint, id: todo.id ?? 'null-id');
