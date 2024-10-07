@@ -19,11 +19,11 @@ class TodoTile extends ConsumerWidget {
           : _confirmDeleteTodo(context),
       background: Container(
         color: Colors.green,
-        child: const Align(
+        child: Align(
           alignment: Alignment.centerLeft,
           child: Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Icon(Icons.done),
+            padding: const EdgeInsets.all(8.0),
+            child: Icon(todo.done ? Icons.undo : Icons.done),
           ),
         ),
       ),
